@@ -1,13 +1,11 @@
 import { useRef } from "react";
 import { useState } from "react";
-
 import Button from "./button";
 import { FaPlay } from "react-icons/fa";
 import Buttons from "./button";
 import { TiLocationArrow } from "react-icons/ti";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
 
 
 const Hero = () => {
@@ -18,10 +16,8 @@ const Hero = () => {
 
     const totalVideo=4
     const nextVideoref=useRef(null)
-
     const videoSrc=(index)=>`videos/hero-${index}.mp4` 
 
-    const handleMinivid=()=>{   
         serhasclick(true)
         setcurentIndex((prevIndex)=>prevIndex+1)
     } 
@@ -30,10 +26,8 @@ const Hero = () => {
         setloadVideo(upComingVideo)
     }
    
-
     const videoSrc=(index)=>`/videos/hero-${index}.mp4` 
 
-    const handlevidLoaded=()=>{   
         
         setloadVideo((prev)=>prev+1)
     } 
@@ -68,14 +62,11 @@ const Hero = () => {
           revertOnUpdate: true,
         }
       );
-
     return ( 
         <>
-        <div className="relative h-dvh w-screen overflow-x-hidden ">
             <div id="video-frame" className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75">
                 <div>
                      <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
-
                         <div className="origin-center scale-50 opacity-0 transition-all duration-500 hover:scale-100 hover:opacity-100" onClick={handleMinivid}>
                             <video 
                             ref={nextVideoref}
@@ -83,7 +74,6 @@ const Hero = () => {
                             loop
                             muted
                             id="curent-video"
-
                         <div className="origin-center scale-50 opacity-0 transition-all duration-500 hover:scale-100 hover:opacity-100" 
                         onClick={handleMinivid}>
                             <video 
@@ -92,13 +82,11 @@ const Hero = () => {
                             loop
                             muted
                             id="current-video"
-
                             className="size-64 origin-center scale-150 object-cover object-center"
                             onLoadedData={handlevidLoaded}
                             />
                         </div>
                      </div>
-
                      <video 
                      ref={nextVideoref}
                      src={videoSrc(curentIndex)}
@@ -136,7 +124,6 @@ const Hero = () => {
                         <Buttons id="watch-trailer" title="watch trailer" leftIcon={<TiLocationArrow />} containerClass="bg-yellow-500 flex-center gap-1"/>
                        
                     </div>
-
 
 
                 </div>
