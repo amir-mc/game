@@ -1,4 +1,4 @@
-const Buttons = ({ title,id,rightIcon,leftIcon,containerClass }) => {
+const Button = ({ title,id,rightIcon,leftIcon,containerClass }) => {
   return (
     <button id="id"
      className={`group relative z-10 w-fit cursor-pointer overflow-hidden
@@ -19,4 +19,4 @@ const Buttons = ({ title,id,rightIcon,leftIcon,containerClass }) => {
   );
 };
 
-export default Buttons;
+export default Button;
