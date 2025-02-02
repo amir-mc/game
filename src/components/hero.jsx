@@ -6,15 +6,14 @@ import { TiLocationArrow } from "react-icons/ti";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger)
 
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
 
-  const [loading, setLoading] = useState(true);
+  const [lodering, setlodering] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 4;
@@ -24,6 +23,11 @@ const Hero = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
+  useEffect(()=>{
+    if(loadedVideos===totalVideos-1){
+      setlodering(false)
+    }
+  },[loadedVideos])
 
 
   const handleMiniVdClick = () => {
@@ -58,7 +62,24 @@ const Hero = () => {
       revertOnUpdate: true,
     }
   );
-
+  useGSAP(()=>{
+    gsap.set('#video-frame',{
+      clipPath:"polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
+      borderRadius: "0% 0% 40% 10%",
+    
+    })
+    gsap.from('#video-frame',{
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      borderRadius: "0 0 0 0",
+      ease:'power1.inOut',
+      scrollTrigger:{
+        trigger:'#video-frame',
+        start:'center center',
+        end:'bottom center',
+        scrub:true
+      }
+    })
+  })
  
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
@@ -66,7 +87,17 @@ const Hero = () => {
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
 
-
+      {
+        lodering &&( 
+          <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-yellow-300" >
+               <div className="three-body">
+                <div className="three-body__dot" />
+                <div className="three-body__dot" />
+                <div className="three-body__dot" />
+              </div>
+          </div>
+        )
+      }
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
@@ -104,7 +135,7 @@ const Hero = () => {
             src={getVideoSrc(
               currentIndex === totalVideos - 1 ? 1 : currentIndex
             )}
-            autoPlay
+           // autoPlay
             loop
             muted
             className="absolute left-0 top-0 size-full object-cover object-center"
@@ -137,7 +168,7 @@ const Hero = () => {
       </div>
 
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
+        <b>A</b>MIR
       </h1>
     </div>
   );
