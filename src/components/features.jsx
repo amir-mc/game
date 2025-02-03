@@ -5,7 +5,7 @@ const BentoCart=({src1,title,discription})=>{
             src={src1}
             loop
             muted
-           // autoPlay
+            autoPlay
             className="absolute left-0 top-0 size-full object-cover object-center"
             />
             <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
@@ -47,7 +47,7 @@ const Features = () => {
           
             <div className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
             <BentoCart
-             src1="videos/feature-2.mp4"
+             src1="videos/feature-1.mp4"
              title={ <>BO<b>R</b>DER LAND</> }
              discription="Borderlands is an action role-playing first-person looter shooter video game franchise in a space Western science fantasy setting, created and produced"
  
