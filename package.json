@@ -9,9 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "engines": {
-  "node": "20"
-},
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.12.7",
